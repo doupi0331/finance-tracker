@@ -1,4 +1,8 @@
-class Stock < ApplicationRecord
+class Stock <  ActiveRecord::Base
+  
+  has_many :user_stocks
+  has_many :user, through: :user_stocks
+  
   # def self 為class方法
   def self.find_by_method(ticker_symbol)
     where(ticker: ticker_symbol).first
