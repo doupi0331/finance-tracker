@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # post action之前, 先執行指定的controller
+  devise_for :users, :controllers => { :registrations => "user/registrations" }
   resources :user_stocks, except: [:show, :edit, :update]
-  #root "welcome#index"
-  #get "my_portfolio" => "users#my_portfolio"
-  root "users#my_portfolio"
+  root "welcome#index"
+  get "my_portfolio" => "users#my_portfolio"
   get "search_stock" => "stocks#search"
 end
